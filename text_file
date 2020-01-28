@@ -1,0 +1,6 @@
+---
+title: "My Rmd Document"
+author: "Medha Sagar"
+date: "27 Jan 2020"
+output: html_document
+---
