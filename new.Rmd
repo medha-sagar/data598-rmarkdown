@@ -1,6 +1,29 @@
 ---
 title: "My Rmd Document"
 author: "Medha Sagar"
-date: "27 Jan 2020"
+date: "`r format (Sys.time(), '%d %m %y')`"
 output: html_document
 ---
+
+Here is some inline code `r 1 + 1`
+
+```{r, starwars-plot, fig.cap="A ggplot of starwars stuff" }
+library(tidyverse)
+starwars %>% 
+  filter(species == 'Human') %>% 
+  ggplot() +
+  aes(x= height, y = mass) + geom_point()
+```
+we can see in  Figure \ref(@fig:startwars-plot)
+```{r starwars-tbl}
+library(tidyverse)
+starwars %>% 
+  filter(species == 'Human') %>%
+  select(name, 
+         height,
+         mass,
+         homeworld) %>%
+  knitr::kable(caption = "Caption")
+
+```
+we can see in Table  \ref(@tab:startwars-tbl)
