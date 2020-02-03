@@ -2,21 +2,25 @@
 title: "My Rmd Document"
 author: "Medha Sagar"
 date: "`r format (Sys.time(), '%d %m %y')`"
+bibliography: biblio.bib
 output: html_document
 ---
+```{r, echo = FALSE, warning=FALSE}
+library(tidyverse)
+```
 
 Here is some inline code `r 1 + 1`
 
 ```{r, starwars-plot, fig.cap="A ggplot of starwars stuff" }
-library(tidyverse)
 starwars %>% 
   filter(species == 'Human') %>% 
   ggplot() +
-  aes(x= height, y = mass) + geom_point()
+  aes(x= height, y = mass) + 
+  geom_point()
 ```
-we can see in  Figure \ref(@fig:startwars-plot)
+We can see in Figure \@ref(fig:starwars-plot) a graph.
+
 ```{r starwars-tbl}
-library(tidyverse)
 starwars %>% 
   filter(species == 'Human') %>%
   select(name, 
@@ -26,4 +30,12 @@ starwars %>%
   knitr::kable(caption = "Caption")
 
 ```
-we can see in Table  \ref(@tab:startwars-tbl)
+We can see in Table \@ref(tab:starwars-tbl) a table..
+
+```{r, my-fig, fig.cap = "my-fig"}
+knitr::include_graphics("image.jpg")
+
+```
+Just a PCA analysis \@ref(fig:my-fig)
+
+"Terminologies for reproducible research". [@barba].
